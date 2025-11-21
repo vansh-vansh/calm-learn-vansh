@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CalmLearn - Distraction Free Study Videos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #e6f2ea;
+      color: #163325;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1rem 2rem;
+      background: linear-gradient(120deg, #6bcf8b, #4ba96e);
+      color: #f8fff9;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+      opacity: 0.9;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem 2rem;
+      flex: 1;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+    }
+
+    .player-card, .list-card {
+      background: #f8fff9;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      padding: 1.2rem 1.4rem;
+    }
+
+    .player-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .player-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #c9e7d3;
+    }
+
+    .player-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-meta-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .video-meta-category {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: #d8f2df;
+      color: #215239;
+      margin-top: 0.2rem;
+    }
+
+    .video-meta-description {
+      font-size: 0.9rem;
+      margin-top: 0.45rem;
+      color: #2a4736;
+      line-height: 1.4;
+    }
+
+    .list-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .list-header h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .category-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .category-btn {
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: none;
+      padding: 0.35rem 0.8rem;
+      background: #d7ecdf;
+      color: #234634;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s;
+    }
+
+    .category-btn.active {
+      background: #4ba96e;
+      color: #f8fff9;
+      box-shadow: 0 4px 10px rgba(32, 112, 69, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .video-list {
+      margin-top: 0.4rem;
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+    }
+
+    .video-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0.6rem;
+      padding: 0.55rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.12s ease, transform 0.08s ease, box-shadow 0.1s ease;
+    }
+
+    .video-item:hover {
+      background: #e1f1e7;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .video-item.active {
+      background: #cbe7d4;
+      box-shadow: inset 0 0 0 1px #4ba96e;
+    }
+
+    .thumb {
+      width: 100%;
+      height: 70px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #c6dfce;
+    }
+
+    .v-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .v-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      margin-bottom: 0.18rem;
+      color: #355240;
+    }
+
+    .v-category-pill {
+      padding: 0.05rem 0.5rem;
+      border-radius: 999px;
+      background: #e5f5eb;
+    }
+
+    .v-duration {
+      opacity: 0.8;
+    }
+
+    .v-desc {
+      font-size: 0.78rem;
+      color: #41614b;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 0.6rem;
+      color: #4b6a57;
+      opacity: 0.85;
+    }
+
+    .note {
+      font-size: 0.75rem;
+      margin-top: 0.3rem;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CalmLearn</h1>
+    <p>Distraction-light study space with handpicked educational YouTube videos.</p>
+  </header>
+
+  <main class="layout">
+    <section class="player-card">
+      <div class="player-wrapper">
+        <iframe
+          id="player"
+          src=""
+          title="Study video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="video-meta">
+        <div class="video-meta-title" id="currentTitle">Choose a video from the list to start learning</div>
+        <div class="video-meta-category" id="currentCategory" style="display:none;"></div>
+        <p class="video-meta-description" id="currentDescription">
+          Pick any topic from the right panel. This space stays calm, with no comments, no suggested feeds, only what helps you focus.
+        </p>
+        <p class="note">
+          Note: Videos stream from YouTube. Ads, if any, are controlled by YouTube, but all other clutter is removed here.
+        </p>
+      </div>
+    </section>
+
+    <section class="list-card">
+      <div class="list-header">
+        <h2>Study Library</h2>
+        <div class="category-row" id="categoryRow"></div>
+      </div>
+
+      <div class="video-list" id="videoList"></div>
+    </section>
+  </main>
+
+  <footer>
+    Built for focused learning. Curated by you, powered by YouTube.
+  </footer>
+
+  <script>
+    const videos = [
+      {
+        id: "w6XQQhCgq5c",
+        title: "Introduction to Newton's Laws of Motion",
+        category: "Physics",
+        duration: "12 min",
+        description: "Understand the three basic laws that form the foundation of classical mechanics."
+      },
+      {
+        id: "HcG6SB5P8v4",
+        title: "Vectors for Beginners",
+        category: "Maths",
+        duration: "18 min",
+        description: "Learn what vectors are and how they are used to represent quantities with direction and magnitude."
+      }
+    ];
+
+    const categoryRow = document.getElementById("categoryRow");
+    const videoList = document.getElementById("videoList");
+    const player = document.getElementById("player");
+
+    const currentTitle = document.getElementById("currentTitle");
+    const currentCategory = document.getElementById("currentCategory");
+    const currentDescription = document.getElementById("currentDescription");
+
+    const categories = ["All", ...Array.from(new Set(videos.map(v => v.category)))];
+
+    let activeCategory = "All";
+    let activeVideoId = null;
+
+    function buildCategoryButtons() {
+      categoryRow.innerHTML = "";
+      categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className = "category-btn" + (cat === activeCategory ? " active" : "");
+        btn.textContent = cat;
+        btn.onclick = () => {
+          activeCategory = cat;
+          buildCategoryButtons();
+          renderVideoList();
+        };
+        categoryRow.appendChild(btn);
+      });
+    }
+
+    function getFilteredVideos() {
+      return activeCategory === "All" ? videos : videos.filter(v => v.category === activeCategory);
+    }
+
+    function renderVideoList() {
+      const filtered = getFilteredVideos();
+      videoList.innerHTML = "";
+      filtered.forEach(video => {
+        const item = document.createElement("div");
+        item.className = "video-item" + (video.id === activeVideoId ? " active" : "");
+        item.onclick = () => loadVideo(video);
+
+        const thumb = document.createElement("img");
+        thumb.className = "thumb";
+        thumb.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+
+        const content = document.createElement("div");
+
+        const vTitle = document.createElement("div");
+        vTitle.className = "v-title";
+        vTitle.textContent = video.title;
+
+        const metaRow = document.createElement("div");
+        metaRow.className = "v-meta-row";
+
+        const catPill = document.createElement("span");
+        catPill.className = "v-category-pill";
+        catPill.textContent = video.category;
+
+        const duration = document.createElement("span");
+        duration.className = "v-duration";
+        duration.textContent = video.duration;
+
+        metaRow.appendChild(catPill);
+        metaRow.appendChild(duration);
+
+        const desc = document.createElement("div");
+        desc.className = "v-desc";
+        desc.textContent = video.description;
+
+        content.appendChild(vTitle);
+        content.appendChild(metaRow);
+        content.appendChild(desc);
+
+        item.appendChild(thumb);
+        item.appendChild(content);
+
+        videoList.appendChild(item);
+      });
+    }
+
+    function loadVideo(video) {
+      activeVideoId = video.id;
+      const embedUrl = `https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1&controls=1`;
+      player.src = embedUrl;
+      currentTitle.textContent = video.title;
+      currentCategory.textContent = video.category;
+      currentCategory.style.display = "inline-block";
+      currentDescription.textContent = video.description;
+      renderVideoList();
+    }
+
+    buildCategoryButtons();
+    renderVideoList();
+    if (videos.length > 0) loadVideo(videos[0]);
+  </script>
+</body>
+</html>
