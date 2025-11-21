@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CalmLearn - JEE Premium Study Space</title>
+  <title>CalmLearn - JEE Playlists Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     * {
@@ -13,7 +13,7 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #081225 0, #020308 55%, #000000 100%);
+      background: radial-gradient(circle at top, #050816 0, #020308 55%, #000000 100%);
       color: #e6f4ff;
       min-height: 100vh;
       display: flex;
@@ -22,9 +22,9 @@
 
     header {
       padding: 1.1rem 2rem;
-      background: linear-gradient(135deg, #050814 0%, #050816 40%, #040f24 100%);
-      border-bottom: 1px solid rgba(0, 216, 255, 0.35);
-      box-shadow: 0 0 35px rgba(0, 216, 255, 0.18);
+      background: linear-gradient(135deg, #020617 0%, #020617 40%, #020617 100%);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.18);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -33,9 +33,9 @@
     header h1 {
       font-size: 1.7rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #e9fbff;
+      color: #e0f2fe;
     }
 
     header p {
@@ -47,7 +47,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
       gap: 1.5rem;
       padding: 1.5rem 2rem 2rem;
       flex: 1;
@@ -64,13 +64,13 @@
     }
 
     .card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      background: radial-gradient(circle at top left, #020617 0, #020617 60%, #020617 100%);
       border-radius: 18px;
       padding: 1.2rem 1.4rem;
-      border: 1px solid rgba(15, 118, 255, 0.4);
+      border: 1px solid rgba(30, 64, 175, 0.7);
       box-shadow:
-        0 0 40px rgba(0, 229, 255, 0.14),
-        0 18px 45px rgba(0, 0, 0, 0.65);
+        0 0 40px rgba(56, 189, 248, 0.16),
+        0 20px 45px rgba(0, 0, 0, 0.9);
     }
 
     .player-card {
@@ -85,9 +85,9 @@
       padding-top: 56.25%;
       border-radius: 16px;
       overflow: hidden;
-      background: radial-gradient(circle at top, #172554, #020617 70%);
-      border: 1px solid rgba(0, 216, 255, 0.3);
-      box-shadow: 0 0 35px rgba(0, 216, 255, 0.22);
+      background: radial-gradient(circle at top, #111827, #020617 70%);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.26);
     }
 
     .player-wrapper iframe {
@@ -101,7 +101,7 @@
     .video-meta-title {
       font-size: 1.1rem;
       font-weight: 600;
-      color: #e5f0ff;
+      color: #e5edff;
     }
 
     .video-meta-category {
@@ -109,8 +109,8 @@
       font-size: 0.78rem;
       padding: 0.2rem 0.7rem;
       border-radius: 999px;
-      background: rgba(0, 216, 255, 0.08);
-      border: 1px solid rgba(0, 216, 255, 0.7);
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.7);
       color: #7de3ff;
       margin-top: 0.22rem;
     }
@@ -152,7 +152,7 @@
       border-radius: 999px;
       border: 1px solid rgba(71, 85, 185, 0.9);
       padding: 0.35rem 0.85rem;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
       color: #c7d2fe;
       cursor: pointer;
       transition: transform 0.08s ease, box-shadow 0.12s ease, border 0.12s, background 0.15s;
@@ -161,17 +161,17 @@
 
     .category-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
-      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+      border-color: rgba(56, 189, 248, 0.85);
     }
 
     .category-btn.active {
       background: radial-gradient(circle at top, #0ea5e9, #1d4ed8);
-      border-color: rgba(129, 230, 217, 0.8);
+      border-color: rgba(129, 230, 217, 0.9);
       color: #e0faff;
       box-shadow:
-        0 0 18px rgba(56, 189, 248, 0.85),
-        0 10px 30px rgba(15, 23, 42, 0.9);
+        0 0 20px rgba(56, 189, 248, 0.95),
+        0 12px 32px rgba(15, 23, 42, 0.96);
     }
 
     .video-list {
@@ -208,20 +208,20 @@
     }
 
     .video-item:hover {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.8));
       transform: translateY(-1px);
       box-shadow:
         0 12px 26px rgba(15, 23, 42, 0.95),
-        0 0 20px rgba(56, 189, 248, 0.4);
-      border-color: rgba(37, 99, 235, 0.7);
+        0 0 20px rgba(56, 189, 248, 0.55);
+      border-color: rgba(37, 99, 235, 0.8);
     }
 
     .video-item.active {
-      background: radial-gradient(circle at top left, rgba(8, 47, 73, 0.9), rgba(15, 23, 42, 0.95));
-      border-color: rgba(56, 189, 248, 0.95);
+      background: radial-gradient(circle at top left, rgba(8, 47, 73, 0.95), rgba(15, 23, 42, 0.98));
+      border-color: rgba(56, 189, 248, 0.98);
       box-shadow:
-        0 0 28px rgba(56, 189, 248, 0.8),
-        0 14px 32px rgba(15, 23, 42, 0.96);
+        0 0 28px rgba(56, 189, 248, 0.9),
+        0 16px 34px rgba(15, 23, 42, 0.98);
     }
 
     .thumb {
@@ -254,20 +254,20 @@
       padding: 0.06rem 0.55rem;
       border-radius: 999px;
       border: 1px solid rgba(56, 189, 248, 0.7);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.92);
       color: #7dd3fc;
-    }
-
-    .v-duration {
-      opacity: 0.85;
     }
 
     .v-tag {
       padding: 0.05rem 0.55rem;
       border-radius: 999px;
-      background: rgba(22, 163, 74, 0.2);
+      background: rgba(34, 197, 94, 0.18);
       border: 1px solid rgba(34, 197, 94, 0.7);
       color: #bbf7d0;
+    }
+
+    .v-count {
+      opacity: 0.9;
     }
 
     .v-desc {
@@ -289,8 +289,8 @@
 </head>
 <body>
   <header>
-    <h1>CalmLearn · JEE Space</h1>
-    <p>Premium black & neon study zone with handpicked JEE videos. No comments, no suggested feeds, just focused learning.</p>
+    <h1>CalmLearn · JEE Playlists</h1>
+    <p>Black & neon hub for JEE prep. Each card on the right is a full YouTube playlist that plays cleanly here.</p>
   </header>
 
   <main class="layout">
@@ -299,26 +299,28 @@
         <iframe
           id="player"
           src=""
-          title="Study video player"
+          title="JEE playlist player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
       </div>
       <div class="video-meta">
-        <div class="video-meta-title" id="currentTitle">Select a JEE video from the right to begin.</div>
+        <div class="video-meta-title" id="currentTitle">
+          Select a playlist on the right to start learning.
+        </div>
         <div class="video-meta-category" id="currentCategory" style="display:none;"></div>
         <p class="video-meta-description" id="currentDescription">
-          All content plays inside this calm space. Videos are loaded from YouTube, but extra distractions stay outside.
+          This page uses YouTube's official playlist player. You control which JEE playlists appear by editing a small list below in the code.
         </p>
         <p class="note">
-          Tip: To add more videos from <strong>JEE Wallah</strong> or other channels, edit the video list in the JavaScript below and paste the YouTube video IDs.
+          To add a playlist: open it on YouTube, copy the text after <strong>list=</strong> in the URL, and paste it into the <code>playlists</code> array inside this file.
         </p>
       </div>
     </section>
 
     <section class="card">
       <div class="list-header">
-        <h2>Study Library · Categories</h2>
+        <h2>Playlists · JEE Wallah & more</h2>
         <div class="category-row" id="categoryRow"></div>
       </div>
 
@@ -327,96 +329,78 @@
   </main>
 
   <footer>
-    Built for focused JEE preparation. Curated by <span>you</span>, streamed by YouTube.
+    Built for focused JEE preparation. Curated by <span>you</span>, streamed by YouTube playlists.
   </footer>
 
   <script>
     // -------------------------------------------------
-    // 1) VIDEO DATA
+    // 1) PLAYLIST DATA
     // -------------------------------------------------
-    // To add more JEE Wallah videos:
-    //  - Go to a YouTube video
-    //  - Copy the part after "watch?v=" (this is the videoId)
-    //  - Duplicate one of the objects below and replace:
-    //       id: "PASTE_VIDEO_ID_HERE"
-    //  - Adjust title, category, duration, description.
+    // HOW TO USE:
+    //  - Open a playlist on YouTube.
+    //    Example URL:
+    //    https://www.youtube.com/playlist?list=PLxyGaR3hEy3gvV4VbbP8pza7MtoJkGu6M
+    //  - The part after "list=" is the playlistId:
+    //       PLxyGaR3hEy3gvV4VbbP8pza7MtoJkGu6M
+    //  - Paste that into id: "..."
+    //
+    //  You can duplicate and edit objects below to add
+    //  all the JEE Wallah playlists you want.
 
-    const videos = [
-      // SAMPLE JEE WALLAH VIDEO ENTRIES
+    const playlists = [
       {
-        id: "PASTE_VIDEO_ID_1",
-        title: "Kinematics 01 | Introduction & Basics",
+        id: "PLxyGaR3hEy3gvV4VbbP8pza7MtoJkGu6M",  // You said this one
+        title: "JEE Wallah · Physics Full Playlist",
         channel: "JEE Wallah",
         category: "Physics",
-        tags: ["JEE", "Class 11"],
-        duration: "45 min",
-        description: "Start your JEE physics journey with motion in a straight line, key terms and basic concepts."
+        approxCount: "40+ videos",
+        description: "Complete physics lectures for JEE from JEE Wallah, in one continuous playlist."
       },
       {
-        id: "PASTE_VIDEO_ID_2",
-        title: "Laws of Motion | Important Concepts",
-        channel: "JEE Wallah",
-        category: "Physics",
-        tags: ["JEE", "Class 11"],
-        duration: "52 min",
-        description: "Deep dive into Newton's laws, free body diagrams and common JEE question patterns."
-      },
-      {
-        id: "PASTE_VIDEO_ID_3",
-        title: "Mole Concept | Crash Revision",
+        id: "PASTE_CHEMISTRY_PLAYLIST_ID_HERE",
+        title: "JEE Wallah · Chemistry Playlist",
         channel: "JEE Wallah",
         category: "Chemistry",
-        tags: ["Physical Chemistry"],
-        duration: "40 min",
-        description: "Revise mole concept, Avogadro number, and key formulas often used in numerical problems."
+        approxCount: "Many videos",
+        description: "Physical, organic and inorganic chemistry lectures for JEE aspirants."
       },
       {
-        id: "PASTE_VIDEO_ID_4",
-        title: "Quadratic Equations for JEE",
+        id: "PASTE_MATHS_PLAYLIST_ID_HERE",
+        title: "JEE Wallah · Maths Playlist",
         channel: "JEE Wallah",
         category: "Maths",
-        tags: ["Algebra"],
-        duration: "55 min",
-        description: "Learn standard forms, roots, nature of roots, and typical JEE-style questions on quadratics."
+        approxCount: "Many videos",
+        description: "Algebra, calculus, coordinate geometry and more, all from JEE Wallah."
       },
       {
-        id: "PASTE_VIDEO_ID_5",
-        title: "JEE Study Strategy | How to Plan Your Day",
+        id: "PASTE_STRATEGY_PLAYLIST_ID_HERE",
+        title: "JEE Wallah · Strategy & Guidance",
         channel: "JEE Wallah",
         category: "Strategy",
-        tags: ["Motivation", "Planning"],
-        duration: "25 min",
-        description: "Plan an effective daily routine for JEE prep with a balance between physics, chemistry and maths."
+        approxCount: "10+ videos",
+        description: "Study strategy, routine planning, paper attempting tips and mindset guidance."
       },
       {
-        id: "PASTE_VIDEO_ID_6",
-        title: "JEE Motivation | When You Feel Like Giving Up",
+        id: "PASTE_MOTIVATION_PLAYLIST_ID_HERE",
+        title: "JEE Wallah · Motivation",
         channel: "JEE Wallah",
         category: "Motivation",
-        tags: ["Mindset"],
-        duration: "15 min",
-        description: "A reminder to stay consistent, handle low scores and keep belief in your long-term improvement."
+        approxCount: "Multiple videos",
+        description: "Talks to keep you consistent and calm during JEE preparation."
       }
     ];
 
     // -------------------------------------------------
-    // 2) CATEGORY SETUP
+    // 2) CATEGORY BUTTONS
     // -------------------------------------------------
-    // You can edit this list to control which category buttons show.
     const allCategories = [
       "All",
       "Physics",
       "Chemistry",
       "Maths",
-      "JEE Wallah",
       "Strategy",
       "Motivation",
-      "Class 11",
-      "Class 12",
-      "Organic Chemistry",
-      "Inorganic Chemistry",
-      "Physical Chemistry",
-      "PYQs"
+      "JEE Wallah"
     ];
 
     const categoryRow = document.getElementById("categoryRow");
@@ -427,13 +411,12 @@
     const currentDescription = document.getElementById("currentDescription");
 
     let activeCategory = "All";
-    let activeVideoId = null;
+    let activePlaylistId = null;
 
-    function matchesCategory(video, category) {
+    function matchesCategory(playlist, category) {
       if (category === "All") return true;
-      if (video.category === category) return true;
-      if (video.channel === category) return true;
-      if (Array.isArray(video.tags) && video.tags.includes(category)) return true;
+      if (playlist.category === category) return true;
+      if (playlist.channel === category) return true;
       return false;
     }
 
@@ -446,18 +429,18 @@
         btn.onclick = () => {
           activeCategory = cat;
           buildCategoryButtons();
-          renderVideoList();
+          renderPlaylistList();
         };
         categoryRow.appendChild(btn);
       });
     }
 
-    function getFilteredVideos() {
-      return videos.filter(v => matchesCategory(v, activeCategory));
+    function getFilteredPlaylists() {
+      return playlists.filter(pl => matchesCategory(pl, activeCategory));
     }
 
-    function renderVideoList() {
-      const filtered = getFilteredVideos();
+    function renderPlaylistList() {
+      const filtered = getFilteredPlaylists();
       videoList.innerHTML = "";
 
       if (filtered.length === 0) {
@@ -465,51 +448,51 @@
         empty.style.fontSize = "0.82rem";
         empty.style.color = "#9ca3c7";
         empty.style.padding = "0.4rem 0.1rem";
-        empty.textContent = "No videos for this category yet. Add more entries in the JavaScript video list.";
+        empty.textContent = "No playlists in this category yet. Add more entries in the playlists list in the code.";
         videoList.appendChild(empty);
         return;
       }
 
-      filtered.forEach(video => {
+      filtered.forEach(pl => {
         const item = document.createElement("div");
-        item.className = "video-item" + (video.id === activeVideoId ? " active" : "");
-        item.onclick = () => loadVideo(video);
+        item.className = "video-item" + (pl.id === activePlaylistId ? " active" : "");
+        item.onclick = () => loadPlaylist(pl);
 
         const thumb = document.createElement("img");
         thumb.className = "thumb";
-        thumb.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-        thumb.alt = video.title;
+        thumb.src = `https://i.ytimg.com/vi/2i0p2tidN88/hqdefault.jpg`;
+        thumb.alt = pl.title;
 
         const content = document.createElement("div");
 
         const vTitle = document.createElement("div");
         vTitle.className = "v-title";
-        vTitle.textContent = video.title;
+        vTitle.textContent = pl.title;
 
         const metaRow = document.createElement("div");
         metaRow.className = "v-meta-row";
 
         const catPill = document.createElement("span");
         catPill.className = "v-category-pill";
-        catPill.textContent = video.category || "JEE";
+        catPill.textContent = pl.category || "JEE";
 
-        const duration = document.createElement("span");
-        duration.className = "v-duration";
-        duration.textContent = video.duration || "";
+        const vCount = document.createElement("span");
+        vCount.className = "v-count";
+        vCount.textContent = pl.approxCount || "";
+
+        if (pl.channel) {
+          const chTag = document.createElement("span");
+          chTag.className = "v-tag";
+          chTag.textContent = pl.channel;
+          metaRow.appendChild(chTag);
+        }
 
         metaRow.appendChild(catPill);
-        if (duration.textContent) metaRow.appendChild(duration);
-
-        if (video.channel) {
-          const tag = document.createElement("span");
-          tag.className = "v-tag";
-          tag.textContent = video.channel;
-          metaRow.appendChild(tag);
-        }
+        if (vCount.textContent) metaRow.appendChild(vCount);
 
         const desc = document.createElement("div");
         desc.className = "v-desc";
-        desc.textContent = video.description || "";
+        desc.textContent = pl.description || "";
 
         content.appendChild(vTitle);
         content.appendChild(metaRow);
@@ -522,22 +505,23 @@
       });
     }
 
-    function loadVideo(video) {
-      activeVideoId = video.id;
-      const embedUrl = `https://www.youtube.com/embed/${video.id}?rel=0&modestbranding=1&controls=1`;
+    function loadPlaylist(pl) {
+      activePlaylistId = pl.id;
+      // Playlist embed URL:
+      const embedUrl = `https://www.youtube.com/embed/videoseries?list=${pl.id}&rel=0&modestbranding=1&controls=1`;
       player.src = embedUrl;
-      currentTitle.textContent = video.title;
-      currentCategory.textContent = video.category || video.channel || "JEE";
+      currentTitle.textContent = pl.title;
+      currentCategory.textContent = pl.category || pl.channel || "Playlist";
       currentCategory.style.display = "inline-block";
-      currentDescription.textContent = video.description || "";
-      renderVideoList();
+      currentDescription.textContent = pl.description || "";
+      renderPlaylistList();
     }
 
     // Initial UI setup
     buildCategoryButtons();
-    renderVideoList();
-    if (videos.length > 0) {
-      loadVideo(videos[0]);
+    renderPlaylistList();
+    if (playlists.length > 0 && playlists[0].id && !playlists[0].id.startsWith("PASTE_")) {
+      loadPlaylist(playlists[0]);
     }
   </script>
 </body>
